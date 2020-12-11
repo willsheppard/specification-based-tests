@@ -8,7 +8,7 @@ sub Positive_Int {
     Gen { abs Int->generate(@_) }
 }
 
-my $property_valid_sum = Property({
+my $property_valid_sum = Property {
     ##[ a <- Positive_Int, b <- Positive_Int ]##
     my $c = sub { $_[0] + $_[1] }
         ->( $a, $b );
@@ -17,7 +17,7 @@ my $property_valid_sum = Property({
 
     ( $c >= $a ) && ( $c >= $b ); # NOTE: should return a boolean
 },
-name => 'sum of 2 positive integers is greater than or equal to either number');
+name => 'sum of 2 positive integers is greater than or equal to either number';
 
 holds( $property_valid_sum );
 
